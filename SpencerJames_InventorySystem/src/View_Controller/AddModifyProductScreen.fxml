@@ -1,11 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.AddModifyProductScreenController">
-    
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: LightGrey;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.AddModifyProductScreenController">
+   <children>
+      <GridPane alignment="CENTER" layoutX="25.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" style="-fx-border-color: Grey; -fx-border-radius: 15px; -fx-border-width: 2px;">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="277.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="662.0" minWidth="10.0" prefWidth="629.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="50.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="239.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="112.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Add Product" textFill="#4653b5" GridPane.columnSpan="2147483647">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label text="ID" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></Label>
+                  <Label text="Name" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></Label>
+                  <Label text="Inv" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></Label>
+                  <Label text="Price" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></Label>
+                  <Label text="Max" GridPane.rowIndex="5">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></Label>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="180.0" promptText="Auto Gen - Disabled" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="180.0" promptText="Product Name" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="85.0" promptText="Inv" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="85.0" promptText="Price" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <children>
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="85.0" promptText="Max">
+                           <font>
+                              <Font name="System Italic" size="12.0" />
+                           </font>
+                        </TextField>
+                        <Label text="Min">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="85.0" promptText="Min">
+                           <font>
+                              <Font name="System Italic" size="12.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="125.0" />
+               </GridPane.margin>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Part ID" />
+                      <TableColumn prefWidth="75.0" text="Part Name" />
+                        <TableColumn prefWidth="75.0" text="Inventory Level" />
+                        <TableColumn prefWidth="152.0" text="Price per Unit" />
+                    </columns>
+                  </TableView>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="90.0" text="Add" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="25.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </GridPane>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </GridPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
 </AnchorPane>
