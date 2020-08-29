@@ -7,27 +7,71 @@ public class Inventory {
     private ObservableList<Product> allProducts;
 
     public void addPart(Part newPart){
-        
+        allParts.add(newPart);
     }
     
     public void addProduct(Product newProduct){
-        
+        allProducts.add(newProduct);
     }
     
     public Part lookupPart(int partId){
-        return null;
+        Part partToLookup = null;
+        for (int i = 0; i < allParts.size(); i++){
+            if (allParts.get(i).getId() == partId){
+                partToLookup = allParts.get(i);
+            }
+        }
+        if (partToLookup != null){
+            return partToLookup;
+        }
+        else{
+            return null;
+        }
     }
     
     public Product lookupProduct(int productId){
-        return null;
+        Product productToLookup = null;
+        for (int i = 0; i < allProducts.size(); i++){
+            if (allProducts.get(i).getId() == productId){
+                productToLookup = allProducts.get(i);
+            }
+        }
+        if (productToLookup != null){
+            return productToLookup;
+        }
+        else{
+            return null;
+        }
     }
     
-    public ObservableList<Part> lookupPart(String partName){
-                return null;
+    public Part lookupPart(String partName){
+        Part partToLookup = null;
+        for (int i = 0; i < allParts.size(); i++){
+            if (allParts.get(i).getName() == partName){
+                partToLookup = allParts.get(i);
+            }
+        }
+        if (partToLookup != null){
+            return partToLookup;
+        }
+        else{
+            return null;
+        }
     }
     
-    public ObservableList<Product> lookupProduct(String productName){
-                return null;
+    public Product lookupProduct(String productName){
+        Product productToLookup = null;
+        for (int i = 0; i < allProducts.size(); i++){
+            if (allProducts.get(i).getName() == productName){
+                productToLookup = allProducts.get(i);
+            }
+        }
+        if (productToLookup != null){
+            return productToLookup;
+        }
+        else{
+            return null;
+        }
     }
     
     public void updatePart(int index, Part selectedPart){

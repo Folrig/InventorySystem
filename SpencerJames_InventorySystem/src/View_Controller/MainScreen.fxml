@@ -28,7 +28,7 @@
             <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
          </padding>
          <children>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" text="Exit" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onExitBtnClicked" prefHeight="45.0" prefWidth="110.0" text="Exit" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="15.0" left="15.0" right="25.0" top="15.0" />
                </GridPane.margin>
@@ -63,8 +63,8 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="Search" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
-                        <TextField GridPane.columnIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#onPartsSearchBtnClicked" prefHeight="30.0" prefWidth="75.0" text="Search" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                        <TextField fx:id="partsTextField" GridPane.columnIndex="2" />
                      </children>
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -73,12 +73,12 @@
                         <Insets />
                      </GridPane.margin>
                   </GridPane>
-                  <TableView prefHeight="132.0" prefWidth="538.0" GridPane.rowIndex="1">
+                  <TableView fx:id="partsTableView" prefHeight="132.0" prefWidth="538.0" GridPane.rowIndex="1">
                      <columns>
-                        <TableColumn prefWidth="131.0" resizable="false" text="Part ID" />
-                        <TableColumn prefWidth="105.0" resizable="false" text="Part Name" />
-                        <TableColumn prefWidth="124.0" resizable="false" text="Inventory Level" />
-                        <TableColumn prefWidth="177.0" resizable="false" text="Price/Cost per Unit" />
+                        <TableColumn fx:id="partsIdTableColumn" prefWidth="131.0" resizable="false" text="Part ID" />
+                        <TableColumn fx:id="partsNameTableColumn" prefWidth="105.0" resizable="false" text="Part Name" />
+                        <TableColumn fx:id="partsInvLevelTableColumn" prefWidth="124.0" resizable="false" text="Inventory Level" />
+                        <TableColumn fx:id="partsPriceTableColumn" prefWidth="177.0" resizable="false" text="Price/Cost per Unit" />
                      </columns>
                   </TableView>
                   <GridPane GridPane.rowIndex="2">
@@ -91,9 +91,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Add" GridPane.halignment="RIGHT" />
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Modify" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Delete" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#onPartsAddBtnClicked" prefHeight="40.0" prefWidth="90.0" text="Add" GridPane.halignment="RIGHT" />
+                        <Button mnemonicParsing="false" onAction="#onPartsModifyBtnClicked" prefHeight="40.0" prefWidth="90.0" text="Modify" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#onPartsDeleteBtnClicked" prefHeight="40.0" prefWidth="90.0" text="Delete" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                </children>
@@ -129,8 +129,8 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="Search" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
-                        <TextField GridPane.columnIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#onProductsSearchBtnClicked" prefHeight="30.0" prefWidth="75.0" text="Search" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                        <TextField fx:id="productsTextField" GridPane.columnIndex="2" />
                      </children>
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -139,12 +139,12 @@
                         <Insets />
                      </GridPane.margin>
                   </GridPane>
-                  <TableView prefHeight="132.0" prefWidth="538.0" GridPane.rowIndex="1">
+                  <TableView fx:id="productsTableView" prefHeight="132.0" prefWidth="538.0" GridPane.rowIndex="1">
                      <columns>
-                        <TableColumn prefWidth="131.0" resizable="false" text="Product ID" />
-                        <TableColumn prefWidth="105.0" resizable="false" text="Product Name" />
-                        <TableColumn prefWidth="124.0" resizable="false" text="Inventory Level" />
-                        <TableColumn prefWidth="177.0" resizable="false" text="Price per Unit" />
+                        <TableColumn fx:id="productsIdTableColumn" prefWidth="131.0" resizable="false" text="Product ID" />
+                        <TableColumn fx:id="productsNameTableColumn" prefWidth="105.0" resizable="false" text="Product Name" />
+                        <TableColumn fx:id="productsInvTableColumn" prefWidth="124.0" resizable="false" text="Inventory Level" />
+                        <TableColumn fx:id="productsPriceTableColumn" prefWidth="177.0" resizable="false" text="Price per Unit" />
                      </columns>
                   </TableView>
                   <GridPane GridPane.rowIndex="2">
@@ -157,9 +157,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Add" GridPane.halignment="RIGHT" />
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Modify" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Delete" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#onProductsAddBtnClicked" prefHeight="40.0" prefWidth="90.0" text="Add" GridPane.halignment="RIGHT" />
+                        <Button mnemonicParsing="false" onAction="#onProductsModifyBtnClicked" prefHeight="40.0" prefWidth="90.0" text="Modify" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#onProductsDeleteBtnClicked" prefHeight="40.0" prefWidth="90.0" text="Delete" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                </children>

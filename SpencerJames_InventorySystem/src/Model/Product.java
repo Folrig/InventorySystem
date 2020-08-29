@@ -12,7 +12,12 @@ public class Product {
     private int max;
     
     public Product(int id, String name, double price, int stock, int min, int max){
-        
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        setMax(max);
+        setMin(min);
     }
     
     public void setId(int id) {
@@ -32,11 +37,15 @@ public class Product {
     }
 
     public void setMin(int min) {
-        this.min = min;
+        if (min >= 0 && min <= this.max){
+            this.min = min;
+        }
     }
 
     public void setMax(int max) {
-        this.max = max;
+        if (max >= 1){
+            this.max = max;
+        }
     }
     
     public int getId() {

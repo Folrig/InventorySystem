@@ -11,9 +11,16 @@ public abstract class Part {
     private int stock;
     private int min;
     private int max;
+    static int idCounter = 100;
     
     public Part(int id, String name, double price, int stock, int min, int max){
-
+        this.id = idCounter;
+        idCounter++;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        setMax(max);
+        setMin(min);
     }
     
     public void setId(int id) {
@@ -33,11 +40,15 @@ public abstract class Part {
     }
 
     public void setMin(int min) {
-        this.min = min;
+        if (min >= 0 && min <= this.max){
+            this.min = min;
+        }
     }
 
     public void setMax(int max) {
-        this.max = max;
+        if (max >= 1){
+            this.max = max;
+        }
     }
     
     public int getId() {
