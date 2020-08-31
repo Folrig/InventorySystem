@@ -39,7 +39,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="partsInhouseRadioBtn" mnemonicParsing="false" pickOnBounds="false" selected="true" text="In-House" GridPane.columnIndex="1">
+                  <RadioButton fx:id="partsInhouseRadioBtn" mnemonicParsing="false" onAction="#onPartsInhouseRadioBtnTog" pickOnBounds="false" selected="true" text="In-House" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
@@ -50,7 +50,7 @@
                         <ToggleGroup fx:id="partsSourceTG" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="partsOutsourcedRadioBtn" mnemonicParsing="false" text="Outsourced" toggleGroup="$partsSourceTG" GridPane.columnIndex="2" />
+                  <RadioButton fx:id="partsOutsourcedRadioBtn" mnemonicParsing="false" onAction="#onPartsOutsourcedRadioBtnTog" text="Outsourced" toggleGroup="$partsSourceTG" GridPane.columnIndex="2" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
@@ -96,12 +96,12 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="partsSourceLabel" text="Company Name" GridPane.rowIndex="5">
+                  <Label fx:id="partsSourceLabel" text="Machine ID" GridPane.rowIndex="5">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="partsIDTextField" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="175.0" promptText="Auto Gen - Disabled" GridPane.columnIndex="1">
+                  <TextField fx:id="partsIDTextField" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="175.0" promptText="Auto Gen - Disabled" style="-fx-background-color: Gainsboro;" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
@@ -131,7 +131,7 @@
                         <Insets right="20.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="partsSourceTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" promptText="Comp Nm" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <TextField fx:id="partsSourceTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" promptText="Mach ID" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>

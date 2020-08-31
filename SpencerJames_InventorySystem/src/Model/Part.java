@@ -11,11 +11,10 @@ public abstract class Part {
     private int stock;
     private int min;
     private int max;
-    static int idCounter = 100;
     
     public Part(int id, String name, double price, int stock, int min, int max){
-        this.id = idCounter;
-        idCounter++;
+        this.id = Inventory.getPartsIdCounter();
+        Inventory.setPartsIdCounter();
         this.name = name;
         this.price = price;
         this.stock = stock;
