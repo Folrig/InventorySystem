@@ -1,3 +1,10 @@
+/*
+Static class that acts similar to a human keeping track of an inventory
+making the required additions, modifications, and deletions.
+All changes to the inventory must be run through the class,
+no outside modifications are allowed.
+*/
+
 package Model;
 
 import javafx.collections.FXCollections;
@@ -53,7 +60,8 @@ public class Inventory {
     public static ObservableList<Part> lookupPart(String partName){
         ObservableList<Part> filteredParts = FXCollections.observableArrayList();
         for (Part part : allParts){
-            if (part.getName().contains(partName)){
+            String lowerCasePartName = part.getName().toLowerCase();
+            if (lowerCasePartName.contains(partName)){
                 filteredParts.add(part);
             }
         }
@@ -68,7 +76,8 @@ public class Inventory {
     public static ObservableList<Product> lookupProduct(String productName){
         ObservableList<Product> filteredProducts = FXCollections.observableArrayList();
         for (Product product : allProducts){
-            if (product.getName().contains(productName)){
+            String lowerCaseProductName = product.getName().toLowerCase();
+            if (lowerCaseProductName.contains(productName)){
                 filteredProducts.add(product);
             }
         }
@@ -81,11 +90,27 @@ public class Inventory {
     }
     
     public static void updatePart(int index, Part selectedPart){
-        
+        int partToModifyIndex = 0;
+        for(Part part : allParts){
+             if(part.getId() == partToModify.getId()){
+                 break;
+             }
+             partToModifyIndex++;
+        }
+        selectedPart.setId(partToModify.getId());
+        allParts.set(partToModifyIndex, selectedPart);
     }
     
     public static void updateProduct(int index, Product newProduct){
-        
+        int productToModifyIndex = 0;
+        for(Product product : allProducts){
+            if(product.getId() == productToModify.getId()){
+                break;
+            }
+            productToModifyIndex++;
+        }
+        newProduct.setId(productToModify.getId());
+        allProducts.set(productToModifyIndex, newProduct);
     }
     
     public static boolean deletePart(Part selectedPart){

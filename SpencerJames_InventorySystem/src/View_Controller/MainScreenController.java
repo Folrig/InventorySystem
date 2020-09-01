@@ -1,3 +1,8 @@
+/*
+Controller that facilitates the data within the data model
+through the GUI in the view of the MainScreen
+*/
+
 package View_Controller;
 
 import Model.Inventory;
@@ -98,18 +103,20 @@ public class MainScreenController implements Initializable {
 
     @FXML
     void onPartsModifyBtnClicked(ActionEvent event) throws IOException {
-        Inventory.setCurrentAddState(AddState.Modify);
         Inventory.setPartToModify(partsTableView.getSelectionModel().getSelectedItem());
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        stage.setTitle("Modify Existing Part");
-        scene = FXMLLoader.load(getClass().getResource("AddModifyPartScreen.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        if(Inventory.getPartToModify() != null){
+            Inventory.setCurrentAddState(AddState.Modify);
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            stage.setTitle("Modify Existing Part");
+            scene = FXMLLoader.load(getClass().getResource("AddModifyPartScreen.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        }
     }
 
     @FXML
     void onPartsSearchBtnClicked(ActionEvent event) {
-        String searchInput = partsTextField.getText();
+        String searchInput = partsTextField.getText().toLowerCase();
         ObservableList<Part> filteredParts = FXCollections.observableArrayList();
         if(searchInput != null && !"".equals(searchInput)){
             try{
@@ -130,7 +137,7 @@ public class MainScreenController implements Initializable {
             }
             catch(Exception e){
                 filteredParts = Inventory.lookupPart(searchInput);
-                if(!filteredParts.isEmpty()){
+                if(filteredParts != null && !filteredParts.isEmpty()){
                     partsTableView.setItems(filteredParts);
                     partsIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
                     partsNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -180,18 +187,20 @@ public class MainScreenController implements Initializable {
 
     @FXML
     void onProductsModifyBtnClicked(ActionEvent event) throws IOException {
-        Inventory.setCurrentAddState(AddState.Modify);
         Inventory.setProductToModify(productsTableView.getSelectionModel().getSelectedItem());
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        stage.setTitle("Modify Existing Product");
-        scene = FXMLLoader.load(getClass().getResource("AddModifyProductScreen.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        if(Inventory.getProductToModify() != null){
+            Inventory.setCurrentAddState(AddState.Modify);
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            stage.setTitle("Modify Existing Product");
+            scene = FXMLLoader.load(getClass().getResource("AddModifyProductScreen.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        }
     }
 
     @FXML
     void onProductsSearchBtnClicked(ActionEvent event) {
-        String searchInput = productsTextField.getText();
+        String searchInput = productsTextField.getText().toLowerCase();
         ObservableList<Product> filteredProducts = FXCollections.observableArrayList();
         if(searchInput != null && !"".equals(searchInput)){
             try{
@@ -212,7 +221,7 @@ public class MainScreenController implements Initializable {
             }
             catch(Exception e){
                 filteredProducts = Inventory.lookupProduct(searchInput);
-                if(!filteredProducts.isEmpty()){
+                if(filteredProducts != null && !filteredProducts.isEmpty()){
                     productsTableView.setItems(filteredProducts);
                     productsIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
                     productsNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));

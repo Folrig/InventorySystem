@@ -14,7 +14,9 @@ public abstract class Part {
     
     public Part(int id, String name, double price, int stock, int min, int max){
         this.id = Inventory.getPartsIdCounter();
-        Inventory.setPartsIdCounter();
+        if(Inventory.getCurrentAddState() == AddState.Add){
+            Inventory.setPartsIdCounter();
+        }
         this.name = name;
         this.price = price;
         this.stock = stock;

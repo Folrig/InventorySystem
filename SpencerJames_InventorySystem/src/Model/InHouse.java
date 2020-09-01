@@ -1,3 +1,7 @@
+/*
+Subclass of part where parts are made by machines within the company
+*/
+
 package Model;
 
 public class InHouse extends Part {

@@ -1,3 +1,7 @@
+/*
+Subclass of part where parts are imported from other companies
+*/
+
 package Model;
 
 public class Outsourced extends Part {

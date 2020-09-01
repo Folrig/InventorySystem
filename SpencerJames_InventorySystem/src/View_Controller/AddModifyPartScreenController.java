@@ -1,3 +1,8 @@
+/*
+Controller that facilitates the data within the data model
+through the GUI in the view of the AddModifyPartScreen
+*/
+
 package View_Controller;
 
 import Model.*;
@@ -17,23 +22,18 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 public class AddModifyPartScreenController implements Initializable {
     
     Stage stage;
     Parent scene;
-    Part partToModify;
     
     @FXML
     private Label partsAddModLabel;
 
     @FXML
     private RadioButton partsInhouseRadioBtn;
-
-    @FXML
-    private ToggleGroup partsSourceTG;
 
     @FXML
     private RadioButton partsOutsourcedRadioBtn;
@@ -107,12 +107,22 @@ public class AddModifyPartScreenController implements Initializable {
         if(partsInhouseRadioBtn.isSelected()){
             InHouse partToAdd = new InHouse(idInput, nameInput, priceInput,
                 invInput, minInput, maxInput, Integer.parseInt(sourceInput));
-            Inventory.addPart(partToAdd);
+            if(Inventory.getCurrentAddState() == AddState.Add){
+                Inventory.addPart(partToAdd);
+            }
+            else{
+                Inventory.updatePart(0, partToAdd);
+            }
         }
         else{
             Outsourced partToAdd = new Outsourced(idInput, nameInput,
                 priceInput, invInput, minInput, maxInput, sourceInput);
-            Inventory.addPart(partToAdd);
+            if(Inventory.getCurrentAddState() == AddState.Add){
+                Inventory.addPart(partToAdd);
+            }
+            else{
+                Inventory.updatePart(0, partToAdd);
+            }
         }
         
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
@@ -136,11 +146,16 @@ public class AddModifyPartScreenController implements Initializable {
             partsPriceTextField.setText(Double.toString(Inventory.getPartToModify().getPrice()));
             partsMaxTextField.setText(Integer.toString(Inventory.getPartToModify().getMax()));
             if(Inventory.getPartToModify() instanceof InHouse){
+                partsInhouseRadioBtn.setSelected(true);
+                partsOutsourcedRadioBtn.setSelected(false);
                 InHouse tempPart = (InHouse)Inventory.getPartToModify();
                 partsSourceTextField.setText(Integer.toString(tempPart.getMachineId()));
             }
             else{
+                partsInhouseRadioBtn.setSelected(false);
+                partsOutsourcedRadioBtn.setSelected(true);
                 Outsourced tempPart = (Outsourced)Inventory.getPartToModify();
+                partsSourceLabel.setText("Company Name");
                 partsSourceTextField.setText(tempPart.getCompanyName());
             }
             partsMinTextField.setText(Integer.toString(Inventory.getPartToModify().getMin()));
