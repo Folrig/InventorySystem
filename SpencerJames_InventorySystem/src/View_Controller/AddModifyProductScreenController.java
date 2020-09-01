@@ -36,6 +36,7 @@ public class AddModifyProductScreenController implements Initializable {
     Stage stage;
     Parent scene;
     ObservableList<Part> productAssociatedPartsTempList = FXCollections.observableArrayList();
+    ObservableList<Part> deletedPartsTempList = FXCollections.observableArrayList();
     
     @FXML
     private Label productsAddModLabel;
@@ -108,6 +109,11 @@ public class AddModifyProductScreenController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
+            if(Inventory.getCurrentAddState() == AddState.Modify && !deletedPartsTempList.isEmpty()){
+                for(Part part : deletedPartsTempList){
+                    Inventory.getProductToModify().addAssociatedPart(part);
+                }
+            }
             stage = (Stage)((Button)event.getSource()).getScene().getWindow();
             stage.setTitle("Main Menu");
             scene = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
@@ -134,6 +140,7 @@ public class AddModifyProductScreenController implements Initializable {
 
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK){
+                    deletedPartsTempList.add(partInTempList);
                     productAssociatedPartsTempList.remove(partInTempList);
                 }
             }

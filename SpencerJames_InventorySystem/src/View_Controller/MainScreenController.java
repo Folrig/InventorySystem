@@ -88,16 +88,18 @@ public class MainScreenController implements Initializable {
 
     @FXML
     void onPartsDeleteBtnClicked(ActionEvent event) {
-        Part partToDelete = partsTableView.getSelectionModel().getSelectedItem();
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Okay To Delete?");
-        alert.setHeaderText("Deleting " + partToDelete.getName());
-        alert.setContentText("Click OK to confirm deletion or cancel to go back.");
+        if(partsTableView.getSelectionModel().getSelectedItem() != null){     
+            Part partToDelete = partsTableView.getSelectionModel().getSelectedItem();
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Okay To Delete?");
+            alert.setHeaderText("Deleting " + partToDelete.getName());
+            alert.setContentText("Click OK to confirm deletion or cancel to go back.");
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            Inventory.deletePart(partToDelete);
-            populatePartsTableView();
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                Inventory.deletePart(partToDelete);
+                populatePartsTableView();
+            }
         }
     }
 
@@ -172,16 +174,18 @@ public class MainScreenController implements Initializable {
 
     @FXML
     void onProductsDeleteBtnClicked(ActionEvent event) {
-        Product productToDelete = productsTableView.getSelectionModel().getSelectedItem();
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Okay To Delete?");
-        alert.setHeaderText("Deleting " + productToDelete.getName());
-        alert.setContentText("Click OK to confirm deletion or cancel to go back.");
+        if(productsTableView.getSelectionModel().getSelectedItem() != null){
+            Product productToDelete = productsTableView.getSelectionModel().getSelectedItem();
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Okay To Delete?");
+            alert.setHeaderText("Deleting " + productToDelete.getName());
+            alert.setContentText("Click OK to confirm deletion or cancel to go back.");
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            Inventory.deleteProduct(productToDelete);
-            populateProductsTableView();
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                Inventory.deleteProduct(productToDelete);
+                populateProductsTableView();
+            }
         }
     }
 
